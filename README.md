@@ -1,6 +1,8 @@
 # nocra-electron-ts
 A non-CRA boilerplate for an Electron app with React, TypeScript, and Webpack
 
+*Why?* Too much going on under the hood with `create-react-app`, so things have been stripped down to allow for more freedom.
+
 ## Setting Up
 * [Download](https://github.com/slashinfty/nocra-electron-ts/zipball/main/) and unzip the latest release
 * Enter the extracted folder and initiate the project with `npm init`
@@ -22,6 +24,9 @@ npm i -D @types/react @types/react-dom concurrently cross-env css-loader electro
 },
 ```
 
-* Add [Electron Builder](https://www.electron.build/configuration/configuration#configuration) options to `package.json`
+* Add [Electron Builder](https://www.electron.build/configuration/configuration#configuration) options to `package.json` (preferred output directory is `/dist`)
 
-* Run `npm run dev` to launch the electron app
+## Next Steps
+* Run `npm run dev` to launch the dev server and Electron window (updates on changes)
+* Install React components and UI frameworks
+* Replace this `README` with your own
