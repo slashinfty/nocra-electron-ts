@@ -3,22 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = [
     {
         mode: 'development',
-        entry: './src/electron.ts',
-        target: 'electron-main',
-        module: {
-        rules: [{
-            test: /\.ts$/,
-            include: /src/,
-            use: ['ts-loader']
-        }]
-        },
-        output: {
-            path: './build',
-            filename: 'electron.js'
-        }
-    },
-    {
-        mode: 'development',
         entry: './src/react.tsx',
         target: 'web',
         devtool: 'source-map',
@@ -46,7 +30,7 @@ module.exports = [
             })
         ],
         devServer: {
-            static: './build',
+            static: __dirname + '/build',
             port: 9000
         }
     }

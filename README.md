@@ -4,7 +4,7 @@ A non-CRA boilerplate for an Electron app with React, TypeScript, and Webpack
 
 ## Setting Up
 * [Download](https://github.com/slashinfty/nocra-electron-ts/archive/refs/heads/main.zip) and unzip the latest release
-* Rename the folder, then enter it and initiate the project with `npm init`
+* Rename the folder, then enter it and initiate the project with `npm init` (entry point should be `index.js`)
 * Install dependencies
 
 ```
@@ -15,8 +15,8 @@ npm i -D @types/react @types/react-dom concurrently cross-env css-loader electro
 
 ```
 "scripts": {
-  "dev": "concurrently \"webpack serve\" \"wait-on http://localhost:9000/ && cross-env NODE_ENV=development electron ./build/electron.js\"",
-  "build": "rm -rf build/ && webpack --config ./webpack.config.js",
+  "dev": "rm -rf build/ && webpack -c ./webpack.electron.config.js && concurrently \"webpack s -c ./webpack.web.config.js\" \"wait-on http://localhost:9000/ && cross-env NODE_ENV=development electron ./build/electron.js\"",
+  "build": "rm -rf build/ && webpack -c ./webpack.electron.config.js && webpack -c ./webpack.web.config.js",
   "build-linux": "npm run build && electron-builder -l",
   "build-mac": "npm run build && electron-builder -m",
   "build-windows": "npm run build && electron-builder -w"
