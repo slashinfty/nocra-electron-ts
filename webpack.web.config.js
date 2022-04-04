@@ -21,7 +21,7 @@ module.exports = [
             ]
         },
         output: {
-            path: './build',
+            path: __dirname + '/build',
             filename: 'react.js'
         },
         plugins: [
@@ -30,7 +30,7 @@ module.exports = [
             })
         ],
         devServer: {
-            static: __dirname + '/build',
+            static: './build',
             port: 9000
         }
     }

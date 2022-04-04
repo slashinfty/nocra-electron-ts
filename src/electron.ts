@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron');
+const { default: installExtension, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
 
 let mainWindow;
 
@@ -25,7 +26,10 @@ const createWindow = () => {
     }
 }
 
-app.on('ready', createWindow);
+app.on('ready', () => {
+    createWindow();
+    installExtension(REACT_DEVELOPER_TOOLS);
+});
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
