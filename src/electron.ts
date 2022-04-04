@@ -28,7 +28,9 @@ const createWindow = () => {
 
 app.on('ready', () => {
     createWindow();
-    installExtension(REACT_DEVELOPER_TOOLS);
+    if (process.env.NODE_ENV === 'development') {
+        installExtension(REACT_DEVELOPER_TOOLS);
+    }
 });
 
 app.on('window-all-closed', () => {
