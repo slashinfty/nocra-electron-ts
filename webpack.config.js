@@ -37,7 +37,7 @@ module.exports = [
             ]
         },
         output: {
-            path: __dirname + '/build',
+            path: './build',
             filename: 'react.js'
         },
         plugins: [
