@@ -27,10 +27,10 @@ const createWindow = () => {
 }
 
 app.on('ready', () => {
-    createWindow();
     if (process.env.NODE_ENV === 'development') {
         installExtension(REACT_DEVELOPER_TOOLS);
     }
+    createWindow();
 });
 
 app.on('window-all-closed', () => {
