@@ -6,6 +6,9 @@ module.exports = [
         entry: './src/react.tsx',
         target: 'web',
         devtool: 'source-map',
+        resolve: {
+            extensions: ['.ts', '.tsx', '.js', '.jsx']
+        },
         module: {
             rules: [
                 {
