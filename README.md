@@ -16,14 +16,14 @@ npm i -D @types/react @types/react-dom concurrently cross-env css-loader electro
 ```
 "scripts": {
   "dev": "rm -rf build/ && webpack -c ./webpack.electron.config.js && concurrently \"webpack s -c ./webpack.web.config.js\" \"wait-on http://localhost:9000/ && cross-env NODE_ENV=development ELECTRON_DISABLE_SECURITY_WARNINGS=true electron ./build/electron.js\"",
-  "build": "rm -rf build/ && webpack -c ./webpack.electron.config.js && webpack -c ./webpack.web.config.js",
-  "build-linux": "npm run build && electron-builder -l",
-  "build-mac": "npm run build && electron-builder -m",
-  "build-windows": "npm run build && electron-builder -w"
+  "build": "rm -rf build/ && webpack -c ./webpack.electron.config.js --mode=production && webpack -c ./webpack.web.config.js --mode=production",
+  "build-linux": "npm run build && electron-builder -c ./electron-builder.config.json -l",
+  "build-mac": "npm run build && electron-builder -c ./electron-builder.config.json -m",
+  "build-windows": "npm run build && electron-builder -c ./electron-builder.config.json -w"
 }
 ```
 
-* Add [Electron Builder](https://www.electron.build/configuration/configuration#configuration) options to `package.json` (preferred output directory is `/dist`)
+* Edit the [Electron Builder](https://www.electron.build/configuration/configuration#configuration) options in `electron-builder.config.json`
 
 ## Next Steps
 * Run `npm run dev` to launch the dev server and Electron window (updates on changes and includes React devtools)
