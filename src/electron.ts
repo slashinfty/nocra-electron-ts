@@ -1,5 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const { default: installExtension, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
+const path = require('path');
 
 let mainWindow;
 
@@ -11,8 +12,8 @@ const createWindow = () => {
             nodeIntegration: true,
             nodeIntegrationInWorker: true,
             nodeIntegrationInSubFrames: true,
-            enableRemoteModule: true,
-            contextIsolation: false
+            contextIsolation: true,
+            preload: path.resolve(__dirname, 'preload.js')
         }
     });
 
@@ -31,6 +32,9 @@ app.on('ready', () => {
         installExtension(REACT_DEVELOPER_TOOLS);
     }
     createWindow();
+    if (BrowserWindow.getAllWindows().length === 0) {
+        createWindow();
+    }
 });
 
 app.on('window-all-closed', () => {

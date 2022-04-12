@@ -20,6 +20,14 @@ module.exports = [
                     test: /\.css$/,
                     include: /src/,
                     use: ['css-loader']
+                },
+                {
+                    test: /\.ttf$/i,
+                    type: 'asset/resource',
+                },
+                {
+                    test: /\.svg$/i,
+                    type: 'asset/inline'
                 }
             ]
         },
@@ -34,7 +42,9 @@ module.exports = [
         ],
         devServer: {
             static: './build',
-            port: 9000
+            port: 9000,
+            hot: true,
+            historyApiFallback: true
         }
     }
 ];
